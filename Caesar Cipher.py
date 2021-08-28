@@ -19,7 +19,6 @@ def caesar(text, shift, direction):
             new_letter = alphabet[new_position]
             end_text += new_letter
     print(f"The {direction}d text is: '{end_text}'")
-    input()
 
 def crack(text):
     crack_list = text.split()
@@ -52,12 +51,12 @@ while True:
     right_input = True
     cls()
     print(logo)
-    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt, "
+                      "type 'crack' to crack the code:\n").lower()
     text = input("Type your message:\n").lower()
     if direction == "crack":
         crack(text)
-
-
+        input()
     try:
         shift = int(input("Type the shift number, between 1 and 25:\n"))
     except ValueError:
