@@ -1,6 +1,6 @@
 from art import *
 import os
-
+from english_words import *
 
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -21,16 +21,43 @@ def caesar(text, shift, direction):
     print(f"The {direction}d text is: '{end_text}'")
     input()
 
+def crack(text):
+    crack_list = text.split()
+    for i in range(1, len(alphabet)):
+        final_cracked = []
+        for word in crack_list:
+            end_text = ''
+            for char in word:
+                if not char.isalpha():  # checks if char is not a letter. if it is it won't shift
+                    end_text += char
+                else:
+                    position = alphabet.index(char)
+                    new_position = (position + i) % 26
+                    new_letter = alphabet[new_position]
+                    end_text += new_letter
+            if end_text in wordlist:
+                final_cracked.append(end_text)
+        if len(crack_list)/2 <= len(final_cracked) <= len(crack_list):
+            print(f"The cracked text is: '{' '.join(final_cracked)}'")
+    input()
+
+
+
 
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
             'v', 'w', 'x', 'y', 'z']
 right_input = True
+wordlist = load_words('all_words.txt')
 while True:
     right_input = True
     cls()
     print(logo)
     direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
     text = input("Type your message:\n").lower()
+    if direction == "crack":
+        crack(text)
+
+
     try:
         shift = int(input("Type the shift number, between 1 and 25:\n"))
     except ValueError:
