@@ -2,6 +2,7 @@ from art import *
 import os
 from english_words import *
 
+
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -19,6 +20,8 @@ def caesar(text, shift, direction):
             new_letter = alphabet[new_position]
             end_text += new_letter
     print(f"The {direction}d text is: '{end_text}'")
+    input()
+
 
 def crack(text):
     crack_list = text.split()
@@ -39,8 +42,6 @@ def crack(text):
         if len(crack_list)/2 <= len(final_cracked) <= len(crack_list):
             print(f"The cracked text is: '{' '.join(final_cracked)}'")
     input()
-
-
 
 
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',

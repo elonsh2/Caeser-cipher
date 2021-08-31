@@ -12,5 +12,5 @@ def load_words(filename):
     '\n'.join(wordlist)
     return wordlist
 
-wordlist = load_words('all_words.txt')
 
+wordlist = load_words('all_words.txt')
